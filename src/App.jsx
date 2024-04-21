@@ -8,6 +8,7 @@ import { Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
+import RetseptInfo from "./pages/RetseptInfo";
 
 //components
 import ProtectedRotes from "./components/ProtectedRotes";
@@ -53,6 +54,10 @@ const routes = createBrowserRouter([
         {
           path: '/themeContainer',
           element: <ThemeContainer/>
+        },
+        {
+          path: '/retseptInfo/:id',
+          element: <RetseptInfo/>
         }
       ]
     },

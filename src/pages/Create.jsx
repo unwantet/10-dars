@@ -9,26 +9,15 @@ function Create() {
   const [description , setDescription] = useState("")
   const [img , setImg] = useState("")
   const [cookingTime , setCookingTime] = useState("")
+  const [img2 , setImg2] = useState("")
+  const [img3 , setImg3] = useState("")
+  const [img4 , setImg4] = useState("")
+
 
   const {postData} = useFetch("http://localhost:3000/recipies" , "POST" )  
   
   const [ingerediends , setIngrediends] = useState([])
-  const [urls , setUrls] = useState([])
 
-  const addURl = (e)=>{
-    e.preventDefault();
-    
-    if(img != ""){
-      if(!urls.includes(img)){
-        setUrls((prev) => {
-          return [...prev, img]})
-        toast.success("Url muvoffaqiyatli qoshildi")
-      }else{
-        toast.error("Bu Url oldin yozilgan") 
-      }
-    }else{
-      toast.error("Url kiriting")
-    }}
 
   const addIngrediend = (e)=>{
     e.preventDefault();
@@ -58,6 +47,9 @@ function Create() {
         name,
         description,
         img,
+        img2,
+        img3,
+        img4,
         cookingTime: cookingTime,
         ingerediends,
       }
@@ -133,25 +125,52 @@ function Create() {
        
         <label className="form-control w-full">
         <div className="label">
-            <span className="label-text">Img Url</span>
-          </div>
+        <span className="label-text">Img Urls</span>
+        </div>
           <div className="flex gap-2">
+          <label className="form-control w-full">
           <input
             type="url"
             placeholder="Type here"
             className="input input-bordered w-full"
+            required
             onChange={(e)=>setImg(e.target.value)}
             value={img}
-          />
-              <button className="btn btn-secondary" onClick={addURl}>+</button>
-              <Toaster/>
-              </div>
-          <div className="mt-1 ">
-            <p className="opacity-70">Photos: {urls.map((index , item)=>{
-                return <span key={index} className="badge badge-outline">{item}</span>
-            })}</p>
-          </div>
+            />
         </label>
+        <label className="form-control w-full">
+          <input
+            type="url"
+            placeholder="Type here"
+            className="input input-bordered w-full"
+            required
+            onChange={(e)=>setImg2(e.target.value)}
+            value={img2}
+            />
+        </label>
+        <label className="form-control w-full">
+          <input
+            type="url"
+            placeholder="Type here"
+            className="input input-bordered w-full"
+            required
+            onChange={(e)=>setImg3(e.target.value)}
+            value={img3}
+            />
+        </label>
+        <label className="form-control w-full">
+          <input
+            type="url"
+            placeholder="Type here"
+            className="input input-bordered w-full"
+            required
+            onChange={(e)=>setImg4(e.target.value)}
+            value={img4}
+            />
+        </label>
+            </div>
+        </label>
+              <Toaster/>
         <label className="form-control w-full">
           <div className="label">
             <span className="label-text">Description</span>

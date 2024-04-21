@@ -43,7 +43,7 @@ function AllRetsept( {retsepts} ) {
                   <div className="card-actions justify-end">
                     <button className="btn btn-outline btn-error" onClick={() =>handleDelete(retsep.id)}><MdDelete />
                       </button>
-                  <Link to={`/RetseptInfo/${retsep.id}`} className="btn btn-outline btn-accent ">More info</Link>
+                  <Link to={`/retseptInfo/${retsep.id}`} className="btn btn-outline btn-accent ">More info</Link>
                   </div>
                 </div>
               </div>
