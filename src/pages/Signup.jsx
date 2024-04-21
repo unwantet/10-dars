@@ -1,4 +1,5 @@
-import React from 'react'
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
 
  function Signup() {
     
