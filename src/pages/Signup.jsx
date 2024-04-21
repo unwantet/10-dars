@@ -19,7 +19,6 @@ export const action = async ({request}) => {
 function Signup() {
 
     let userSignup = useActionData()
-    console.log(userSignup);
     const { SignupWithGoogle ,SigupWithPassword, user , error} = UseSignup();
 
     useEffect(() => {

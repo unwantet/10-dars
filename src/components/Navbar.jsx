@@ -8,7 +8,6 @@ import { auth } from "../firebase/firebaseConfig";
 
  function Navbar() {
     const {navbarBgColor , user} = useContext( GlobalContext );
-    console.log(user);
 
     const signOutFunc = () => {
         signOut(auth).then(() => {
@@ -17,7 +16,6 @@ import { auth } from "../firebase/firebaseConfig";
             console.log(error);
         })
     }
-    console.log(navbarBgColor);
     return (
         <div className="duration-300 transition border-b-2 border-gray-200" style={{backgroundColor: navbarBgColor}}>
             <div className="navbar align-element">

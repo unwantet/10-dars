@@ -35,7 +35,7 @@ function Create() {
     }
 
 
-    setImg("")
+    setIngrediend("")
   }
 
 

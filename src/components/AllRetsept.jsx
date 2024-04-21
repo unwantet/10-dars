@@ -9,6 +9,7 @@ function AllRetsept( {retsepts} ) {
 
 
     const handleDelete = (id) => {
+      confirm("Are you sure you want to delete this recipe?") &&
         fetch("http://localhost:3000/recipies/" + id, {
           method: "DELETE",
         })

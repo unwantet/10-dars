@@ -21,7 +21,6 @@ function Signin() {
 
   const {SignInWithPassword} = useLogin();
 
-  console.log(useSignin);
 
     const { SignupWithGoogle , user , error} = UseSignup();
 
