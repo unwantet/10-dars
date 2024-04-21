@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const links = [
 
     {
@@ -8,26 +8,33 @@ const links = [
     },
     {
         id: 2,
-        text: 'About',
-        link: '/about'
+        text: 'Create Recipie',
+        link: '/create'
     },
     {
         id: 3,
-        text: 'Contact',
-        link: '/contact'
+        text: 'Change Theme',
+        link: '/themeContainer'
     }
 ]
 
  function NavLinks() {
+    const navigate = useNavigate();
+
+    const clickNavigate = (link) => {
+        navigate(link);
+    }
+
      return(
 
          <>
      {links.map((link) => {
          return (
-             <Link key={link.id} to={link.link} className='px-3 py-3 hover:bg-base-content rounded hover:text-white'>
+            <li key={link.id}>
+             <button key={link.id} onClick={()=>clickNavigate(link.link)} className='btn btn-sm mb-3'>
                 {link.text}
-            </Link>
-            
+            </button>           
+            </li>
             )
         })}
      </>

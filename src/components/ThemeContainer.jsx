@@ -1,4 +1,4 @@
-const colors = ["#1E0342", "#912BBC", "#135D66"];
+const colors = ["#1E0342", "#912BBC", "#A5DD9B"];
 
 import { IoMdMoon } from "react-icons/io";
 import { FaSun } from "react-icons/fa";

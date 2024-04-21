@@ -2,6 +2,8 @@ import { createBrowserRouter , RouterProvider } from "react-router-dom";
 //layout
 import  MainLayout  from "./layout/MainLayout";
 
+import { Navigate } from "react-router-dom";
+
 //pages
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
@@ -9,15 +11,33 @@ import Signup from "./pages/Signup";
 
 //components
 import ProtectedRotes from "./components/ProtectedRotes";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
+import Create from "./pages/Create";
+
+// context
+import { GlobalContext } from "./context/useContextGlobal";
+import { useContext } from "react";
+import { useEffect } from "react";
+
+// firebse
+
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase/firebaseConfig";
+import ThemeContainer from "./components/ThemeContainer";
+
+//Form 
+
+import {action as signupAction} from './pages/Signup'
+import {action as signinAction} from './pages/Signin'
+
 
 function App() {
-  const routes = createBrowserRouter([
+const {user , dispatch , authChange} = useContext(GlobalContext);
+
+const routes = createBrowserRouter([
     {
       path: "/",
       element:(
-        <ProtectedRotes user={true}>
+        <ProtectedRotes user={user}>
           <MainLayout />
         </ProtectedRotes>
         ), 
@@ -27,25 +47,40 @@ function App() {
           element: <Home />
         },
         {
-          path: '/about',
-          element: <About/>
+          path: '/create',
+          element: <Create/>
         },
         {
-          path: '/contact',
-          element: <Contact/>
+          path: '/themeContainer',
+          element: <ThemeContainer/>
         }
       ]
     },
     {
       path: '/signin',
-      element: <Signin/>
+      element: user ? <Navigate to="/" /> :  <Signin/>,
+      action: signinAction
     },
     {
       path: '/signup',
-      element: <Signup/>
+      element: user ? <Navigate to="/" /> :  <Signup/>,
+      action: signupAction
     },
   ])
-  return <RouterProvider router={routes}/>
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      dispatch({
+        type:"SIGN_IN",
+        payload:user,
+      })
+      dispatch({
+        type:"AUTH_CHANGE",
+      })
+    });
+  }, [])
+
+  return <>{authChange && <RouterProvider router={routes}/>}</>
 }
 
 

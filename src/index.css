@@ -6,5 +6,13 @@
 @layer components {
     .align-element{
         @apply max-w-[1200px] w-full px-5 mx-auto; 
+    };
+    .green-line {
+        background: rgb(113,187,66);
+        background: radial-gradient(circle, rgba(113,187,66,0.3478641456582633) 41%, rgba(78,146,173,0.406687675070028) 100%);
+    }
+    .pink-line{
+        background: rgb(187,182,66);
+        background: linear-gradient(45deg, rgba(187,182,66,0.25262605042016806) 41%, rgba(173,78,149,0.406687675070028) 100%);
     }
 }

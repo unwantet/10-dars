@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom"
 import Navbar from "../components/Navbar";
-import ThemeContainer from "../components/ThemeContainer";
 
 function MainLayout() {
     
@@ -8,8 +7,7 @@ function MainLayout() {
     return (
     <>
         <Navbar/>
-        <ThemeContainer/>
-        <main className="align-element">
+        <main className="align-element ">
             <Outlet/>
         </main>
     </>

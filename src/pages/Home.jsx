@@ -1,9 +1,20 @@
+import AllRetsept from "../components/AllRetsept"
+import { useFetch } from "../hooks/useFetch"
 
-function Home() {
+
+
+export default function Home() {
+    
+    const { 
+      data : retsepts ,
+      isPending ,
+      error  } = useFetch("http://localhost:3000/retseptlar")
+      if(error) return <h1 className="text-center text-4xl mt-48 font-bold">{error}</h1>
+      if(isPending) return <div class="custom-loader"></div>  
+
     return (
-        <div >
-            <h1>Hello</h1>
+        <div className="max-w-screen-lg w-full mx-auto px-3">
+        {retsepts && <AllRetsept retsepts={ retsepts } />}
         </div>
     )
 }
-export default Home;
