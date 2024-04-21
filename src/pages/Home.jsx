@@ -8,7 +8,7 @@ export default function Home() {
     const { 
       data : retsepts ,
       isPending ,
-      error  } = useFetch("http://localhost:3000/retseptlar")
+      error  } = useFetch("http://localhost:3000/recipies")
       if(error) return <h1 className="text-center text-4xl mt-48 font-bold">{error}</h1>
       if(isPending) return <div class="custom-loader"></div>  
 
