@@ -143,7 +143,7 @@ function Create() {
             type="url"
             placeholder="Type here"
             className="input input-bordered w-full"
-            required
+            
             onChange={(e)=>setImg2(e.target.value)}
             value={img2}
             />
@@ -153,7 +153,7 @@ function Create() {
             type="url"
             placeholder="Type here"
             className="input input-bordered w-full"
-            required
+            
             onChange={(e)=>setImg3(e.target.value)}
             value={img3}
             />
@@ -163,7 +163,7 @@ function Create() {
             type="url"
             placeholder="Type here"
             className="input input-bordered w-full"
-            required
+            
             onChange={(e)=>setImg4(e.target.value)}
             value={img4}
             />
