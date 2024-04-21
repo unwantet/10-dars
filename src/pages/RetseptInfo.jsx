@@ -62,6 +62,10 @@ export default function RetseptInfo() {
                     <h2 className="font-semibold text-3xl mt-10">Discription : </h2>
                     <p className="ml-10 mb-10 mt-5">{retsept.description}</p>
                 </div>
+
+                 <div className="card-actions justify-end">
+                        <Link to='/' className="btn btn-error">Back</Link>
+                 </div>
             </div>
         </div>
         }
