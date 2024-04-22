@@ -53,12 +53,12 @@ export default function RetseptInfo() {
                   {retsept.name} 
                   
                 </h1>
-                <div className="flex items-center gap-3 mt-10">
-                <p>Indgradiends : </p>
+                <div className="flex-wrap items-center gap-3 mt-10 sm:flex">
+                <p className="mt-2">Indgradiends : </p>
                 <div className="flex gap-2">
 
                 {retsept.ingerediends.map((ing ) => (
-                    <p className="badge badge-neutral ">{ing}</p>
+                    <p className="badge badge-neutral mt-2">{ing}</p>
                 ))}
                     </div>
                 </div>
@@ -71,7 +71,7 @@ export default function RetseptInfo() {
                     <p className="ml-10 mb-10 mt-5">{retsept.description}</p>
                 </div>
 
-                 <div className="card-actions justify-end">
+                 <div className="card-actions justify-end mb-8">
                         <Link to='/' className="btn btn-error">Back</Link>
                  </div>
             </div>
