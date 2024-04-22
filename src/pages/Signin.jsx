@@ -32,7 +32,7 @@ function Signin() {
 
     return (
       <div className="min-h-screen  grid place-items-center green-line">
-      <div className="max-w-96 w-full">
+      <div className="sm:max-w-96 w-full max-w-80">
         <Form method="POST">
 
             <FormInput type="email" label="email" name="Email"  url={"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='black' stroke-linecap='round' stroke-width='2'%3E%3Crect width='18' height='14' x='3' y='5' stroke-dasharray='64' stroke-dashoffset='64' rx='1'%3E%3Canimate fill='freeze' attributeName='stroke-dashoffset' dur='0.6s' values='64;0'/%3E%3C/rect%3E%3Cpath stroke-dasharray='24' stroke-dashoffset='24' d='M3 6.5L12 12L21 6.5'%3E%3Canimate fill='freeze' attributeName='stroke-dashoffset' begin='0.6s' dur='0.4s' values='24;0'/%3E%3C/path%3E%3C/g%3E%3C/svg%3E"}/>
