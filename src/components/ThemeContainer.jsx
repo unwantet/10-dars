@@ -7,11 +7,11 @@ import { useEffect, useState } from "react";
 import { GlobalContext } from "../context/useContextGlobal";
 import { useContext } from "react";
 const themes = {
-  nord: 'nord',
+  light: 'light',
   dracula: 'dracula',
 }
 function darkModeFromLocalStorage(){
-    return localStorage.getItem('mode') || themes.nord
+    return localStorage.getItem('mode') || themes.light
   }
 
 
@@ -20,7 +20,7 @@ function ThemeContainer() {
     const [theme, setTheme] = useState(darkModeFromLocalStorage())
 
     const handleClick = () => {
-      const newTheme = theme === themes.nord ? themes.dracula : themes.nord
+      const newTheme = theme === themes.light ? themes.dracula : themes.light
       setTheme(newTheme)
     }
   

@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
-import { useFetch } from "../hooks/useFetch";
+import { UseCreateRecipie } from "../hooks/useCreateRecipie";
+import { useNavigate } from "react-router-dom";
 
 function Create() {
+  const {data , createRecipie} = UseCreateRecipie();
   const [ingrediend, setIngrediend] = useState("")
   const [name , setName] = useState("")
   const [description , setDescription] = useState("")
@@ -12,9 +14,8 @@ function Create() {
   const [img2 , setImg2] = useState("")
   const [img3 , setImg3] = useState("")
   const [img4 , setImg4] = useState("")
+  const navigate = useNavigate();
 
-
-  const {postData} = useFetch("http://localhost:3000/recipies" , "POST" )  
   
   const [ingerediends , setIngrediends] = useState([])
 
@@ -39,6 +40,7 @@ function Create() {
   }
 
 
+
   const handleSubmit = (e)=>{
     e.preventDefault();
 
@@ -53,8 +55,9 @@ function Create() {
         cookingTime: cookingTime,
         ingerediends,
       }
-      postData(newRetsept)
-      window.location.href = "/";
+      createRecipie(newRetsept)
+      navigate("/")
+      
     }
     
 
@@ -64,7 +67,7 @@ function Create() {
     <div className="min-h-screen  grid place-items-center">
     <div className="max-w-[550px] w-full">
 
-      <h1 className="text-3xl text-center font-bold">
+      <h1 className="text-3xl text-center font-bold mt-[-40px]">
         Create New Recipie
       </h1>
 
@@ -184,7 +187,7 @@ function Create() {
             ></textarea>
         </label>
 
-        <button className="btn btn-neutral w-full">Submit</button>
+        <button className="btn btn-neutral w-full mt-6">Submit</button>
       </form>
             </div>
     </div>

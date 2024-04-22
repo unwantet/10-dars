@@ -1,22 +1,29 @@
-import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
-import { MdDeleteForever } from "react-icons/md";
-import toast, { Toaster } from 'react-hot-toast';
-import {useFetch} from "../hooks/useFetch";
+import { useLoaderData } from "react-router-dom";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
+
+// loader 
+export const loader = async ({params}) => {
+
+    const docRef = doc(db, "retseplar", params.id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+    return docSnap.data();
+    } else {
+    console.log("No such document!");
+    }
+
+
+    console.log(params);
+    return null;
+}
 
 
 export default function RetseptInfo() {
-    const { id } = useParams()
-    
-
-    const { 
-      data : retsept ,
-      isPending ,
-      error  } = useFetch("http://localhost:3000/recipies/"+id)
-      if(error) return <h1 className="text-center text-4xl mt-48 font-bold">{error}</h1>
-      if(isPending) return <h1 className="text-center text-4xl mt-48 font-bold">Loading...</h1>  
-
-
+    const data = useLoaderData(); 
+    const retsept = data;
 
       return(
         <div className="max-w-screen-lg w-full mx-auto px-3 mt-10">
@@ -27,18 +34,18 @@ export default function RetseptInfo() {
         retsept && 
         <div className="flex gap-[20px] flex-wrap">
             <div className="w-full">
-                <div className="carousel carousel-center w-full p-4 space-x-4 bg-neutral rounded-box">              
+                <div className="carousel carousel-center w-full p-4 space-x-4 bg-neutral rounded-box h-[160]">              
                         <div className="carousel-item" >
-                         <img src={retsept.img} className="rounded-box" />
+                            <img src={retsept.img} className="rounded-box max-h-[300px]" />
                         </div>
                         <div className="carousel-item" >
-                         <img src={retsept.img2} className="rounded-box" />
+                         <img src={retsept.img2} className="rounded-box max-h-[300px]" />
                         </div>
                         <div className="carousel-item" >
-                         <img src={retsept.img3} className="rounded-box" />
+                         <img src={retsept.img3} className="rounded-box max-h-[300px]" />
                         </div>
                         <div className="carousel-item" >
-                         <img src={retsept.img4} className="rounded-box" />
+                         <img src={retsept.img4} className="rounded-box max-h-[300px]" />
                         </div>
                     </div>
                 <h1 className="text-5xl font-bold text-red-500 mb-4 my-10">

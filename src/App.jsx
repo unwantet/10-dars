@@ -30,6 +30,9 @@ import ThemeContainer from "./components/ThemeContainer";
 import {action as signupAction} from './pages/Signup'
 import {action as signinAction} from './pages/Signin'
 
+// loader
+import { loader as retseptInfoLoader } from "./pages/RetseptInfo";
+
 
 function App() {
 const {user , dispatch , authChange} = useContext(GlobalContext);
@@ -57,7 +60,8 @@ const routes = createBrowserRouter([
         },
         {
           path: '/retseptInfo/:id',
-          element: <RetseptInfo/>
+          element: <RetseptInfo/>,
+          loader: retseptInfoLoader
         }
       ]
     },

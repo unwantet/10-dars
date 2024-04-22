@@ -9,6 +9,6 @@ export default {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["dracula" , "nord" ]
+    themes: ["dracula" , "nord", "light" , "bumblbee"]
   },
 }

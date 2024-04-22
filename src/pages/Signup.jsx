@@ -13,7 +13,6 @@ export const action = async ({request}) => {
     let password = formData.get("Password");
     let name = formData.get("Name");
 
-    console.log(name);
     return {email , password , name , photo}
 }
 function Signup() {
@@ -23,14 +22,19 @@ function Signup() {
 
     useEffect(() => {
       if(userSignup)
-      SigupWithPassword(userSignup.email , userSignup.password)
+      SigupWithPassword(
+         userSignup.email ,
+         userSignup.password,
+         userSignup.name,
+         userSignup.photo)
+         console.log(userSignup);
     }, [userSignup])
 
 
     return (
         <div className="min-h-screen  grid place-items-center  pink-line">
 
-          <div className="max-w-96 w-full">
+          <div className="sm:max-w-96 w-full max-w-80">
             <h1 className="text-4xl font-bold mb-3">Signup</h1>
             <Form method="POST">
             <FormInput type="text" label="user name" name="Name"  url={"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4'/%3E%3C/svg%3E"}/>
