@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 
+
 // loader 
 export const loader = async ({params}) => {
 

@@ -1,31 +1,29 @@
-import { Link, Navigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import toast, { Toaster } from 'react-hot-toast';
 import { MdDelete } from "react-icons/md";
-
+import { doc, deleteDoc } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
 
 
 
 function AllRetsept( {retsepts} ) {
 
-
-    const handleDelete = (id) => {
-      confirm("Are you sure you want to delete this recipe?") &&
-        fetch("http://localhost:3000/recipies/" + id, {
-          method: "DELETE",
-        })
-          .then((response) => {
-            if (response.ok) {
-              
-              <Navigate to="/"/>
-              toast.success("Retsept o'chirildi");
-            } else {
-              console.log("Retsept o'chirilmadi");
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+  const Navigate = useNavigate();
+  const handleDelete = async (id) => {
+    if (confirm("Are you sure you want to delete this recipe?")) {
+      try {
+        // Assuming db is your Firestore database instance
+        await deleteDoc(doc(db, "retseplar", id));
+        toast.success("Recipe deleted successfully");
+        window.location.reload();
+      } catch (error) {
+        // Handle error if delete operation fails
+        console.error("Error deleting recipe:", error);
+        toast.error("Failed to delete recipe");
+      }
     }
+  };
+  
     return (
         <div className="mt-10">  
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
